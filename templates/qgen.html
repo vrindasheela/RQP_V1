@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <table>
+            {% for row in rows %}
+            <tr>
+               <td>{{row["unum"]}}</td>
+               <td>{{row["ques"]}}</td>
+               <td> {{ row["ans"]}}</td>
+            </tr>
+         {% endfor %}
+        </table>
+    </body>
+</html>
