@@ -8,14 +8,22 @@ def home():
 
 @app.route('/qgen', methods = ['POST', 'GET'])
 def qgen():
+       code = request.form['code']
+       print(code)
        con = sql.connect('rqpmain.db')
        con.row_factory = sql.Row
        cur = con.cursor()
-       cur.execute("SELECT * FROM questions") 
-       rows = cur.fetchall() 
-       return render_template("qgen.html", rows = rows)
+       if(code == '1'):
+             cur.execute("SELECT * FROM questions WHERE unum = '1'")
+             rows = cur.fetchall() 
+       else:
+             cur.execute("SELECT * FROM questions WHERE unum = '2'")
+             rows = cur.fetchall() 
 
        
+       return render_template("qgen.html", rows = rows)
+
+
 '''@app.route('/enternew')
 def new_student():
    return render_template('student1.html')
